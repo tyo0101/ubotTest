@@ -45,4 +45,6 @@ function calculateTAXChecksum(taxNumber) {
     return "\u60A8\u7684\u7D71\u4E00\u7DE8\u865F ".concat(cleanedInput, " \u932F\u8AA4\u3002");
   }
 }
+
+;
 //# sourceMappingURL=TAX.dev.js.map

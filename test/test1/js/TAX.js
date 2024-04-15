@@ -33,4 +33,4 @@ export function calculateTAXChecksum(taxNumber) {
     }else {
         return `您的統一編號 ${cleanedInput} 錯誤。`;
     }
-  }
+  };
