@@ -4,24 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/js/bootstrap.min.js">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="./css/style.css">
     <title>帳號查驗</title>
 </head>
 
 <body>
-    <div class="conatiner-fulid">
-        <h1><strong>帳號查驗</strong></h1>
+    <div class="container-fluid">
         <div class="row">
-            <form id="NumberForm">
-                <label for="NumberInput">輸入帳號：</label>
-                <input type="text" id="NumberInput" required>
-                <div class="checkBTN">
-                    <button type="submit" class="btn btn-primary">判別帳號</button>
+            <div class="card">
+                <h1><strong>帳號查驗</strong></h1>
+                <div class="row">
+                    <form id="NumberForm">
+                        <label for="NumberInput">輸入帳號：</label>
+                        <input type="text" id="NumberInput" required>
+                        <div class="checkBTN">
+                            <button type="submit" class="btn btn-primary">判別帳號</button>
+                        </div>
+                    </form>
+                    <div id="result"></div>
                 </div>
-            </form>
-            <div id="result"></div>
+            </div>
         </div>
     </div>
     <script type="module" src="./js/main.js"></script>

@@ -10,12 +10,19 @@ function calculateChecksum(account) {
   var total = 0;
   var weight = [5, 4, 3, 2, 8, 7, 6, 5, 4, 3, 2];
 
-  for (var i = 0; i < account.length; i++) {
+  for (var i = 0; i < 11; i++) {
     total += parseInt(account.charAt(i)) * weight[i];
   }
 
   var totalModulo = total % 11;
   var checksum = 11 - totalModulo;
+
+  if (checksum === 0) {
+    checksum = 1;
+  } else if (checksum === 1) {
+    checksum = 0;
+  }
+
   return checksum;
 }
 
@@ -23,17 +30,14 @@ function calculateChecksum(account) {
 
 function validateAccount(account) {
   var checksum = calculateChecksum(account);
-  var lastDigit = parseInt(account.charAt(11));
+  var lastDigit = parseInt(account.charAt(account.length - 1));
 
   if (checksum === lastDigit) {
-    return "校验成功";
+    return "帳號正確";
   } else {
-    return "校验失败";
+    return "\u5E33\u865F\u932F\u8AA4\uFF0C\u6AA2\u67E5\u78BC\u61C9\u70BA\uFF1A".concat(checksum);
   }
 }
 
 ;
-var accountNumber = "058500243605";
-var result = validateAccount(accountNumber);
-console.log(result); // 输出 "校验成功" 或者 "校验失败"
 //# sourceMappingURL=checkAccount.dev.js.map

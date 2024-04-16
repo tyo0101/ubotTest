@@ -1,42 +1,20 @@
 "use strict";
 
-// import * as checkAccount from './checkAccount.js';
-// document.addEventListener('DOMContentLoaded', () => {
-//     const form = document.getElementById('NumberForm');
-//     form.addEventListener('submit', function(event) {
-//         event.preventDefault();
-//         const inputContent = document.getElementById('NumberInput').value;
-//         const checksum = checkAccount.validateAccount(inputContent);
-//     });
-// });
-function calculateChecksum(account) {
-  var total = 0;
-  var weight = [5, 4, 3, 2, 8, 7, 6, 5, 4, 3, 2];
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-  for (var i = 0; i < 11; i++) {
-    total += parseInt(account.charAt(i)) * weight[i];
-  }
+var checkAccount = _interopRequireWildcard(require("./checkAccount.js"));
 
-  var totalModulo = total % 11;
-  var checksum = 11 - totalModulo;
-  return checksum;
-}
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
-;
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function validateAccount(account) {
-  var checksum = calculateChecksum(account);
-  var lastDigit = parseInt(account.charAt(account.length - 1));
-
-  if (checksum === lastDigit) {
-    return "帳號正確";
-  } else {
-    return "\u5E33\u865F\u932F\u8AA4\uFF0C\u6AA2\u67E5\u78BC\u61C9\u70BA\uFF1A".concat(checksum);
-  }
-}
-
-;
-var accountNumber = "002300001473";
-var result = validateAccount(accountNumber);
-console.log(result); // 输出 "校验成功" 或者 "校验失败"
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('NumberForm');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var inputContent = document.getElementById('NumberInput').value;
+    var checksum = checkAccount.validateAccount(inputContent);
+    console.log(checksum);
+  });
+});
 //# sourceMappingURL=main.dev.js.map
