@@ -17,16 +17,14 @@ function calculateChecksum(account) {
   var totalModulo = total % 11;
   var checksum = 11 - totalModulo;
 
-  if (checksum === 0) {
+  if (checksum === 11) {
     checksum = 1;
-  } else if (checksum === 1) {
+  } else if (checksum === 10) {
     checksum = 0;
   }
 
   return checksum;
 }
-
-;
 
 function validateAccount(account) {
   var checksum = calculateChecksum(account);
