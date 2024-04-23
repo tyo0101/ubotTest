@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("NumberForm");
+  var resultDiv = document.getElementById('result'); // 获取结果显示的 <div> 元素
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     var inputContent = document.getElementById("NumberInput").value;
@@ -54,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var char2 = inputContent.charAt(4);
     var suJect = inputContent.substring(3, 5);
     var firstThreeChars = inputContent.substring(0, 3);
-    var invalidSubjects = ["10", "20", "50", "51", "77", "88"]; // 檢查科目別是否為無效值
+    var invalidSubjects = ["10", "20", "50", "51", "77", "88"];
+    resultDiv.textContent = ''; // 檢查科目別是否為無效值
 
     if (!invalidSubjects.includes(suJect)) {
       console.log("科目別錯誤");
@@ -70,5 +73,18 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(checksum);
     }
   });
+  var originalLog = console.log; //保存原始的 console.log() 方法
+  //重寫 console.log() 方法
+
+  console.log = function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    // 将所有参数拼接成字符串，并显示在 <div> 中
+    resultDiv.textContent += args.join(' ') + '\n'; // 同时也调用原始的 console.log() 方法，保留在控制台中的输出
+
+    originalLog.apply(console, args);
+  };
 });
 //# sourceMappingURL=main.dev.js.map

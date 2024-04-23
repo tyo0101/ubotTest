@@ -31,9 +31,10 @@ function validateAccount(account) {
   var lastDigit = parseInt(account.charAt(account.length - 1));
 
   if (checksum === lastDigit) {
-    return "校验成功";
+    return "帳號正確";
   } else {
-    return "\u6821\u9A8C\u5931\u8D25\uFF0C\u6AA2\u67E5\u78BC\u61C9\u70BA\uFF1A".concat(checksum);
+    var correctArcNumber = account.substr(0, account.length) + checksum;
+    return "\u6AA2\u67E5\u78BC\u61C9\u70BA\uFF1A".concat(checksum, "\u3002\u91CD\u65B0\u8A08\u7B97\u5F8C\u7684\u5C45\u7559\u8B49\u865F\u78BC\uFF1A").concat(correctArcNumber);
   }
 }
 //# sourceMappingURL=checkAccount2.dev.js.map

@@ -4,7 +4,6 @@ import * as addAccount from './addAccount.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const generateButton = document.getElementById("generateVariants");
-
   generateButton.addEventListener("click", function (event) {
       event.preventDefault();
 
@@ -18,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const suJect = variant.substring(3, 5);
           const firstThreeChars = variant.substring(0, 3);
           const invalidSubjects = ["10", "20", "50", "51", "77", "88"];
+
           if (!invalidSubjects.includes(suJect)) {
             console.log("科目別錯誤");
           } else if (char === "2" && char2 === "0") {
@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("NumberForm");
+  const resultDiv = document.getElementById('result'); // 获取结果显示的 <div> 元素
+
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     const inputContent = document.getElementById("NumberInput").value;
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const suJect = inputContent.substring(3, 5);
     const firstThreeChars = inputContent.substring(0, 3);
     const invalidSubjects = ["10", "20", "50", "51", "77", "88"];
+    resultDiv.textContent = '';
 
     // 檢查科目別是否為無效值
     if (!invalidSubjects.includes(suJect)) {
@@ -68,4 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(checksum);
     }
   });
+  const originalLog = console.log; //保存原始的 console.log() 方法
+  //重寫 console.log() 方法
+  console.log = function(...args) {
+      // 将所有参数拼接成字符串，并显示在 <div> 中
+      resultDiv.textContent += args.join(' ') + '\n';
+      // 同时也调用原始的 console.log() 方法，保留在控制台中的输出
+      originalLog.apply(console, args);
+  };
 });

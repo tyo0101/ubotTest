@@ -21,6 +21,7 @@ export function validateAccount(account) {
   if (checksum === lastDigit) {
     return "帳號正確";
   } else {
-    return `帳號錯誤，檢查碼應為：${checksum}`;
+    const correctArcNumber = account.substr(0, account.length) + checksum;
+    return `檢查碼應為：${checksum}。重新計算後的居留證號碼：${correctArcNumber}`;
   }
 };
