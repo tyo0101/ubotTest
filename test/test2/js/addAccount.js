@@ -1,28 +1,14 @@
-// addAccount.js
-
-// 导出生成变体的函数
+//產生三個
 export function generateVariants() {
     const NumberInput = document.getElementById('NumberInput').value.trim();
-
-    if (!isValidNumber(NumberInput)) {
-        alert('请输入有效的数字！');
-        return;
-    }
-
     const variants = [];
     for (let i = 1; i <= 3; i++) {
         const variant = generateVariant(NumberInput, i);
         variants.push(variant);
     }
-
-    const result = document.getElementById('result');
-    result.innerHTML = ''; // 清空结果区域
-    variants.forEach(variant => {
-        result.innerHTML += `<p>${variant}</p>`;
-    });
     return variants;
 }
-
+//一個
 export function generateVariants2() {
     const NumberInput = document.getElementById('NumberInput').value.trim();
     console.log(NumberInput)

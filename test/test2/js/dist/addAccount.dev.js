@@ -4,19 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.generateVariants = generateVariants;
+exports.generateVariants2 = generateVariants2;
 exports.isValidNumber = isValidNumber;
 exports.generateVariant = generateVariant;
 
-// addAccount.js
-// 导出生成变体的函数
+//產生三個
 function generateVariants() {
   var NumberInput = document.getElementById('NumberInput').value.trim();
-
-  if (!isValidNumber(NumberInput)) {
-    alert('请输入有效的数字！');
-    return;
-  }
-
   var variants = [];
 
   for (var i = 1; i <= 3; i++) {
@@ -24,12 +18,15 @@ function generateVariants() {
     variants.push(variant);
   }
 
-  var result = document.getElementById('result');
-  result.innerHTML = ''; // 清空结果区域
+  return variants;
+} //一個
 
-  variants.forEach(function (variant) {
-    result.innerHTML += "<p>".concat(variant, "</p>");
-  });
+
+function generateVariants2() {
+  var NumberInput = document.getElementById('NumberInput').value.trim();
+  console.log(NumberInput);
+  var variants = [];
+  variants.push(NumberInput);
   return variants;
 } // 导出检查输入是否是数字的函数
 
