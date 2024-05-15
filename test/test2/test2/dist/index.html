@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap-5.0.2-dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>帳號查驗</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <h1><strong>帳號查驗</strong></h1>
+                <div class="row">
+                    <form id="NumberForm">
+                        <label for="NumberInput">輸入帳號：</label>
+                        <input type="text" id="NumberInput" required>
+                        <div class="checkBTN">
+                            <button type="submit" class="btn btn-primary">判別帳號</button>
+                            <button class="btn btn-primary" id="generateVariants">增加帳號</button>
+                            <button class="btn btn-danger" id="clearButton">清空内容</button>
+                            <button class="btn btn-warning" onclick="saveTextFile()">下載文件</button>
+                        </div>
+                    </form>
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./Jquery/jquery3.6.0.min.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script src="./js/clearButton.js"></script>
+    <script>
+        function saveTextFile() {
+            // 獲取resultDiv內容
+            const resultDiv = $('#result');
+            const textContent = resultDiv.text();
+
+            // 创建一个新的 Blob 对象，用于保存文本内容
+            const blob = new Blob([textContent], { type: 'text/plain' });
+
+            // 創建下載元素
+            const downloadLink = $('<a></a>');
+            downloadLink.attr('href', URL.createObjectURL(blob));
+            downloadLink.attr('download', 'account.txt'); // 文件名 account.txt
+
+            // 将 <a> 元素添加到文档中并触发点击事件进行下载
+            $('body').append(downloadLink);
+            downloadLink[0].click();
+
+            // 完成后移除 <a> 元素
+            downloadLink.remove();
+        }
+
+    </script>
+</body>
+
+</html>
